@@ -2,16 +2,16 @@ from random import randint as ri
 
 
 class Entity:
-    def __init__(self, level, lp, hp, fraction, coordinates, inventory, inventory_size,
-                 melee_slot, ranged_combat_slot, armor_slot, after_death_items, exp):
+    def __init__(self, level, hp, fraction, coordinates, inventory, inventory_size,
+                 melee_slot, armor_slot, after_death_items, exp):
         self.level = level
-        self.lp = lp
+        self.lp = 0
         self.hp = hp
         self.fraction = fraction
         self.coordinates = coordinates
         self.inventory = inventory
         self.inventory_size = inventory_size
-        self.slots = [melee_slot, ranged_combat_slot, armor_slot]
+        self.slots = [melee_slot, armor_slot]
         self.after_death_items = after_death_items
         self.exp = exp
 
@@ -25,7 +25,6 @@ class Entity:
             if ri(0, 101) <= i[1]:
                 items.append(i[0])
         return items
-
 
     def to_get_damage(self, hp):
         self.hp -= hp
